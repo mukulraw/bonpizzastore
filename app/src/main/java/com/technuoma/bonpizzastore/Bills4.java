@@ -1,4 +1,4 @@
-package com.technuoma.gbuyclient;
+package com.technuoma.bonpizzastore;
 
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
@@ -13,11 +13,9 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,10 +24,8 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.technuoma.gbuyclient.orders1POJO.Datum;
-import com.technuoma.gbuyclient.orders1POJO.orders1Bean;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
+import com.technuoma.bonpizzastore.ordersPOJO.Datum;
+import com.technuoma.bonpizzastore.ordersPOJO.ordersBean;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -44,7 +40,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
-public class Bills extends Fragment {
+public class Bills4 extends Fragment {
 
 
     RecyclerView grid;
@@ -126,11 +122,11 @@ public class Bills extends Fragment {
                         AllApiIneterface cr = retrofit.create(AllApiIneterface.class);
 
 
-                        Call<orders1Bean> call = cr.getOrders1(SharePreferenceUtils.getInstance().getString("id"), dd);
+                        Call<ordersBean> call = cr.getOrders4(dd);
 
-                        call.enqueue(new Callback<orders1Bean>() {
+                        call.enqueue(new Callback<ordersBean>() {
                             @Override
-                            public void onResponse(Call<orders1Bean> call, Response<orders1Bean> response) {
+                            public void onResponse(Call<ordersBean> call, Response<ordersBean> response) {
 
                                 if (response.body().getStatus().equals("1")) {
                                     adapter.setData(response.body().getData());
@@ -146,7 +142,7 @@ public class Bills extends Fragment {
                             }
 
                             @Override
-                            public void onFailure(Call<orders1Bean> call, Throwable t) {
+                            public void onFailure(Call<ordersBean> call, Throwable t) {
                                 progress.setVisibility(View.GONE);
                             }
                         });
@@ -207,11 +203,11 @@ public class Bills extends Fragment {
         AllApiIneterface cr = retrofit.create(AllApiIneterface.class);
 
 
-        Call<orders1Bean> call = cr.getOrders1(SharePreferenceUtils.getInstance().getString("id"), dd);
+        Call<ordersBean> call = cr.getOrders4(dd);
 
-        call.enqueue(new Callback<orders1Bean>() {
+        call.enqueue(new Callback<ordersBean>() {
             @Override
-            public void onResponse(Call<orders1Bean> call, Response<orders1Bean> response) {
+            public void onResponse(Call<ordersBean> call, Response<ordersBean> response) {
 
                 if (response.body().getStatus().equals("1")) {
                     adapter.setData(response.body().getData());
@@ -227,7 +223,7 @@ public class Bills extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<orders1Bean> call, Throwable t) {
+            public void onFailure(Call<ordersBean> call, Throwable t) {
                 progress.setVisibility(View.GONE);
             }
         });
@@ -253,7 +249,7 @@ public class Bills extends Fragment {
         @Override
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View view = inflater.inflate(R.layout.order_list_model1, viewGroup, false);
+            View view = inflater.inflate(R.layout.order_list_item, viewGroup, false);
             return new ViewHolder(view);
         }
 
@@ -261,17 +257,26 @@ public class Bills extends Fragment {
         public void onBindViewHolder(@NonNull ViewHolder holder, int i) {
 
             final Datum item = list.get(i);
-            DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true).cacheOnDisk(true).resetViewBeforeLoading(false).build();
-            ImageLoader loader = ImageLoader.getInstance();
-            loader.displayImage(item.getImage() , holder.image , options);
-
-            holder.quantity.setText(item.getPname());
-            holder.title.setText("#" + item.getAddress());
-            holder.price.setText("Quantity - " + item.getQuantity());
-            holder.name.setText("Price - " + item.getPrice());
-            holder.address.setText("Address - " + item.getAddress());
+            holder.txn.setText("#" + item.getTxn());
+            holder.date.setText(item.getCreated());
             holder.status.setText(item.getStatus());
+            holder.name.setText(item.getName());
+            holder.address.setText(item.getAddress());
+            holder.pay.setText(item.getPay_mode());
+            holder.slot.setText(item.getSlot());
+            holder.amount.setText("\u20B9 " + item.getAmount());
 
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent = new Intent(context , OrderDetails.class);
+                    intent.putExtra("oid" , item.getId());
+                    startActivity(intent);
+
+                }
+            });
 
 
         }
@@ -282,19 +287,20 @@ public class Bills extends Fragment {
         }
 
         class ViewHolder extends RecyclerView.ViewHolder {
-            ImageView image;
-            TextView quantity, title , price , name , address , status;
+            TextView txn , date , status , name , address , amount , pay , slot;
 
-            public ViewHolder(@NonNull View itemView) {
+
+            ViewHolder(@NonNull View itemView) {
                 super(itemView);
 
-                image = itemView.findViewById(R.id.imageView5);
-                title = itemView.findViewById(R.id.textView17);
-                quantity = itemView.findViewById(R.id.textView18);
-                price = itemView.findViewById(R.id.textView19);
-                name = itemView.findViewById(R.id.textView3);
-                address = itemView.findViewById(R.id.textView4);
-                status = itemView.findViewById(R.id.textView5);
+                txn = itemView.findViewById(R.id.textView27);
+                date = itemView.findViewById(R.id.textView28);
+                status = itemView.findViewById(R.id.textView35);
+                name = itemView.findViewById(R.id.textView32);
+                address = itemView.findViewById(R.id.textView34);
+                amount = itemView.findViewById(R.id.textView30);
+                pay = itemView.findViewById(R.id.textView40);
+                slot = itemView.findViewById(R.id.textView42);
 
 
             }

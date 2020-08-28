@@ -1,4 +1,4 @@
-package com.technuoma.gbuyclient.ordersPOJO;
+package com.technuoma.bonpizzastore.ordersPOJO;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

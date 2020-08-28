@@ -1,4 +1,4 @@
-package com.technuoma.gbuyclient;
+package com.technuoma.bonpizzastore;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

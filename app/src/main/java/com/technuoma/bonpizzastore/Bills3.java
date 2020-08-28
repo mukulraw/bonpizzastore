@@ -1,4 +1,4 @@
-package com.technuoma.gbuyclient;
+package com.technuoma.bonpizzastore;
 
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
@@ -24,8 +24,8 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.technuoma.gbuyclient.ordersPOJO.Datum;
-import com.technuoma.gbuyclient.ordersPOJO.ordersBean;
+import com.technuoma.bonpizzastore.ordersPOJO.Datum;
+import com.technuoma.bonpizzastore.ordersPOJO.ordersBean;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.technuoma.gbuyclient;
+package com.technuoma.bonpizzastore;
 
 import android.app.ActivityManager;
 import android.app.NotificationChannel;

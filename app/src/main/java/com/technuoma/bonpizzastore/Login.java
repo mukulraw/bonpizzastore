@@ -1,4 +1,4 @@
-package com.technuoma.gbuyclient;
+package com.technuoma.bonpizzastore;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.technuoma.gbuyclient.loginPOJO.loginBean;
+import com.technuoma.bonpizzastore.loginPOJO.loginBean;
 
 import retrofit2.Call;
 import retrofit2.Callback;

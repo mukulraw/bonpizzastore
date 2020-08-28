@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.technuoma.gbuyclient">
+    package="com.technuoma.bonpizzastore">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.technuoma.gbuyclient.Bean"
+        android:name="com.technuoma.bonpizzastore.Bean"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.technuoma.gbuyclient.OrderDetails"/>
-        <activity android:name="com.technuoma.gbuyclient.MainActivity2" />
-        <activity android:name="com.technuoma.gbuyclient.Splash">
+        <activity android:name="com.technuoma.bonpizzastore.OrderDetails"/>
+        <activity android:name="com.technuoma.bonpizzastore.MainActivity2" />
+        <activity android:name="com.technuoma.bonpizzastore.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.technuoma.gbuyclient.Login" />
-        <activity android:name="com.technuoma.gbuyclient.MainActivity" />
+        <activity android:name="com.technuoma.bonpizzastore.Login" />
+        <activity android:name="com.technuoma.bonpizzastore.MainActivity" />
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
@@ -42,7 +42,7 @@
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="@string/default_notification_channel_id" />
 
-        <service android:name="com.technuoma.gbuyclient.MyFirebaseMessagingService">
+        <service android:name="com.technuoma.bonpizzastore.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>

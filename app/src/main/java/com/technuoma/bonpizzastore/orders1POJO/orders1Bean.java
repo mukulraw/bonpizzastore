@@ -1,11 +1,11 @@
-package com.technuoma.gbuyclient.orderDetailsPOJO;
+package com.technuoma.bonpizzastore.orders1POJO;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class orderDetailsBean {
+public class orders1Bean {
     @SerializedName("status")
     @Expose
     private String status;

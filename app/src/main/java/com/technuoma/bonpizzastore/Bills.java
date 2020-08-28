@@ -1,4 +1,4 @@
-package com.technuoma.gbuyclient;
+package com.technuoma.bonpizzastore;
 
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -25,8 +26,8 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.technuoma.gbuyclient.orders1POJO.Datum;
-import com.technuoma.gbuyclient.orders1POJO.orders1Bean;
+import com.technuoma.bonpizzastore.orders1POJO.Datum;
+import com.technuoma.bonpizzastore.orders1POJO.orders1Bean;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -43,7 +44,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
-public class Bills1 extends Fragment {
+public class Bills extends Fragment {
 
 
     RecyclerView grid;
@@ -125,7 +126,7 @@ public class Bills1 extends Fragment {
                         AllApiIneterface cr = retrofit.create(AllApiIneterface.class);
 
 
-                        Call<orders1Bean> call = cr.getOrders2(SharePreferenceUtils.getInstance().getString("id"), dd);
+                        Call<orders1Bean> call = cr.getOrders1(SharePreferenceUtils.getInstance().getString("id"), dd);
 
                         call.enqueue(new Callback<orders1Bean>() {
                             @Override
@@ -206,7 +207,7 @@ public class Bills1 extends Fragment {
         AllApiIneterface cr = retrofit.create(AllApiIneterface.class);
 
 
-        Call<orders1Bean> call = cr.getOrders2(SharePreferenceUtils.getInstance().getString("id"), dd);
+        Call<orders1Bean> call = cr.getOrders1(SharePreferenceUtils.getInstance().getString("id"), dd);
 
         call.enqueue(new Callback<orders1Bean>() {
             @Override
@@ -272,6 +273,7 @@ public class Bills1 extends Fragment {
             holder.status.setText(item.getStatus());
 
 
+
         }
 
         @Override
@@ -293,6 +295,7 @@ public class Bills1 extends Fragment {
                 name = itemView.findViewById(R.id.textView3);
                 address = itemView.findViewById(R.id.textView4);
                 status = itemView.findViewById(R.id.textView5);
+
 
             }
         }
