@@ -121,8 +121,9 @@ public class Bills3 extends Fragment {
 
                         AllApiIneterface cr = retrofit.create(AllApiIneterface.class);
 
+                        Log.d("vendot_id", SharePreferenceUtils.getInstance().getString("id"));
 
-                        Call<ordersBean> call = cr.getOrders(dd);
+                        Call<ordersBean> call = cr.getOrders(SharePreferenceUtils.getInstance().getString("id"), dd);
 
                         call.enqueue(new Callback<ordersBean>() {
                             @Override
@@ -190,7 +191,6 @@ public class Bills3 extends Fragment {
         super.onResume();
 
 
-
         progress.setVisibility(View.VISIBLE);
 
         Bean b = (Bean) getActivity().getApplicationContext();
@@ -203,8 +203,8 @@ public class Bills3 extends Fragment {
 
         AllApiIneterface cr = retrofit.create(AllApiIneterface.class);
 
-
-        Call<ordersBean> call = cr.getOrders(dd);
+        Log.d("vendot_id", SharePreferenceUtils.getInstance().getString("id"));
+        Call<ordersBean> call = cr.getOrders(SharePreferenceUtils.getInstance().getString("id"), dd);
 
         call.enqueue(new Callback<ordersBean>() {
             @Override
@@ -274,8 +274,8 @@ public class Bills3 extends Fragment {
                 @Override
                 public void onClick(View v) {
 
-                    Intent intent = new Intent(context , OrderDetails.class);
-                    intent.putExtra("oid" , item.getId());
+                    Intent intent = new Intent(context, OrderDetails.class);
+                    intent.putExtra("oid", item.getId());
                     startActivity(intent);
 
                 }
@@ -290,7 +290,7 @@ public class Bills3 extends Fragment {
         }
 
         class ViewHolder extends RecyclerView.ViewHolder {
-            TextView txn , date , status , name , address , amount , pay , slot , deldate;
+            TextView txn, date, status, name, address, amount, pay, slot, deldate;
 
 
             ViewHolder(@NonNull View itemView) {

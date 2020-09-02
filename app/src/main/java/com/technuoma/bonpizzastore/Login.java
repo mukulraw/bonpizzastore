@@ -91,7 +91,7 @@ public class Login extends AppCompatActivity {
                                     SharePreferenceUtils.getInstance().saveString("username" , response.body().getData().getUsername());
                                     SharePreferenceUtils.getInstance().saveString("type" , response.body().getData().getTyp());
 
-                                    if (response.body().getData().getTyp().equals("admin"))
+                                    if (response.body().getData().getTyp().equals("vendor"))
                                     {
                                         Intent i = new Intent(Login.this, MainActivity2.class);
                                         startActivity(i);

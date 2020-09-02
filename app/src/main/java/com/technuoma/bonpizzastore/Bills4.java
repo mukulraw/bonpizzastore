@@ -122,7 +122,7 @@ public class Bills4 extends Fragment {
                         AllApiIneterface cr = retrofit.create(AllApiIneterface.class);
 
 
-                        Call<ordersBean> call = cr.getOrders4(dd);
+                        Call<ordersBean> call = cr.getOrders4(SharePreferenceUtils.getInstance().getString("id"),dd);
 
                         call.enqueue(new Callback<ordersBean>() {
                             @Override
@@ -203,7 +203,7 @@ public class Bills4 extends Fragment {
         AllApiIneterface cr = retrofit.create(AllApiIneterface.class);
 
 
-        Call<ordersBean> call = cr.getOrders4(dd);
+        Call<ordersBean> call = cr.getOrders4(SharePreferenceUtils.getInstance().getString("id"),dd);
 
         call.enqueue(new Callback<ordersBean>() {
             @Override

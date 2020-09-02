@@ -38,12 +38,14 @@ public interface AllApiIneterface {
     @Multipart
     @POST("pizza/api/getOrders3.php")
     Call<ordersBean> getOrders(
+            @Part("sid") String sid,
             @Part("date") String date
     );
 
     @Multipart
     @POST("pizza/api/getOrders4.php")
     Call<ordersBean> getOrders4(
+            @Part("sid") String sid,
             @Part("date") String date
     );
 
